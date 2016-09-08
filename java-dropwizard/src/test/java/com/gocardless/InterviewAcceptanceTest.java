@@ -3,6 +3,7 @@ package com.gocardless;
 import com.gocardless.api.Message;
 import io.dropwizard.client.JerseyClientBuilder;
 import io.dropwizard.testing.junit.DropwizardAppRule;
+import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 
@@ -16,10 +17,18 @@ public class InterviewAcceptanceTest {
     @ClassRule
     public static final DropwizardAppRule<InterviewConfig> RULE = new DropwizardAppRule<>(InterviewApplication.class);
 
+    private static String baseUrl;
+    private static Client client;
+
+    @BeforeClass
+    public static void setUp() {
+        baseUrl = String.format("http://localhost:%d", RULE.getLocalPort());
+        client = new JerseyClientBuilder(RULE.getEnvironment()).build("test client");
+    }
+
     @Test
     public void shouldGetMessage() {
-        Client client = new JerseyClientBuilder(RULE.getEnvironment()).build("test client");
-        String url = String.format("http://localhost:%d/hello", RULE.getLocalPort());
+        String url = String.format("%s/hello", baseUrl);
 
         Response response = client.target(url).request().accept(APPLICATION_JSON_TYPE).get();
         assertThat(response.getStatus()).isEqualTo(200);
