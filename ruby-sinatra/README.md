@@ -1,12 +1,12 @@
 # Install
 
-- Install ruby 2.3.1
+- Install Ruby 2.3.4
 - `bundle install`
 
 # Use
 
-- `bundle exec rackup`
+The server can be started using `bundle exec rackup`.
 
 # Test
 
-- `bundle exec rspec`
+Tests are run with RSpec, they can be started with `bundle exec rspec`.
