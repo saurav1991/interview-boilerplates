@@ -3,7 +3,7 @@
 We recommend using virtualenv to avoid installing dependencies globally, you
 can find installation instructions [here](https://virtualenv.pypa.io/en/latest/installation/).
 
-The code and tests should work with python versions 2.7 - 3.5.
+The code and tests should work with python versions 2.7 - 3.6.
 
 When you have virtualenv installed:
 - Start a new virtual env: `virtualenv gocardless_interview`
