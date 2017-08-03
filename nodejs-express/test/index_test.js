@@ -4,7 +4,7 @@ const mocha = require('mocha');
 describe('/hello', () => {
   let server;
   beforeEach(() => { server = require('../index') });
-  afterEach(() => server.close);
+  afterEach(() => server.close());
 
   it('returns JSON', (done) => {
     request(server)
